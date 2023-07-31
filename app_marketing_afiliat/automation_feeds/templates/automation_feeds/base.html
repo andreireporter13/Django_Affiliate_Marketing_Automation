@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% block title %}
+    {% endblock %}
+
+    <meta charset="UTF-8">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+	<a class="navbar-brand" href="/">Affiliate automation</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+	  <div class="navbar-nav">
+	    <a class="nav-link" href="">-|-</a>
+	    <a class="nav-link active" aria-current="page" href="/">Home</a>
+	    <a class="nav-link" href="/feeds">Feeds</a>
+	    <a class="nav-link" href="">-|-</a>
+	    <a class="nav-link" href="/blog">Blog</a>
+	  </div>
+	</div>
+      </div>
+    </nav>
+    <br>
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<!-- Footer --- HERE -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2023 Affiliate Automation. Demo Project.</p>
+  </div>
+</footer>
+
+</body>
+</html>
