@@ -28,10 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'automation_feeds.apps.AutomationFeedsConfig',
     'blog_affiliate.apps.BlogAffiliateConfig',
-
 ]
 
 MIDDLEWARE = [
@@ -128,3 +127,7 @@ STATICFILES_DIRS = []
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRONJOBS = [
+    ('*/1 * * * *', 'automation_feeds.cron.scrape_and_insert')
+]
