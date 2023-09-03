@@ -17,42 +17,61 @@
         </h2>
       </div>
       <div class="row">
-
-        {% for product in feeds %}
-       <div class="col-sm-6 col-md-4 col-lg-3">
-         <div class="box">
-           <a href="{{ product.link }}">
-             <div class="img-box">
-               <img src="{{ product.image_urls }}" alt="">
-             </div>
-             <div class="detail-box">
-               <h6>
-                {{ product.split_title }}
-               </h6>
-               <h6>
-                 Price
-                 <span>
-                   {{ product.price }}
-                 </span>
-               </h6>
-             </div>
-             <div class="new">
-               <span>
-                 New
-               </span>
-             </div>
-           </a>
-         </div>
-       </div>
-       {% endfor %}
-
-    <!-- Button for load more data from db -->
-    </div>
-       <div class="btn-box">
-        <a href="{% url 'feeds' %}">
-          View All Products
-        </a>
+        {% for product in page %}
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+                <a href="{{ product.affiliate_code }}">
+                    <div class="img-box">
+                        <img src="{{ product.image_urls }}" alt="">
+                    </div>
+                    <div class="detail-box">
+                        <h6>{{ product.title }}</h6>
+                        <h6>Price<span>{{ product.price }}</span></h6>
+                    </div>
+                    <div class="new">
+                        <span>New</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
       </div>
-    </div>
-  </section>
+
+    <br>
+    <br>
+
+<div class="text-center">
+        {% if page_obj.has_previous %}
+            <a href="?page={{page_obj.previous_page_number}}" 
+     class="btn btn-secondary mx-2">Previous</a>
+        {% endif %}
+
+        <a href="?page=1" class="btn btn-secondary">First</a>
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if num == page_obj.number %}
+                <span class="current-page">{{ num }}</span>
+            {% else %}
+                <a href="?page={{num}}" class="btn btn-secondary mx-2">
+     {{ num }}
+     </a>
+            {% endif %}
+        {% endfor %}
+
+        <a href="?page={{page_obj.paginator.num_pages}}" 
+     class="btn btn-secondary mx-2">
+     Last
+     </a>
+
+        {% if page.has_next %}
+            <a href="?page={{page_obj.next_page_number}}" 
+     class="btn btn-secondary mx-2">
+     Next
+     </a>
+        {% endif %}
+</div>
+
+
+  </section> 
+
   {% endblock %}

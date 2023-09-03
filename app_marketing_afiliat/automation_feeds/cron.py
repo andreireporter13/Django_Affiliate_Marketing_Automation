@@ -39,7 +39,7 @@ def scrape_and_insert():
                 title=title,
                 affiliate_code=aff_code,
                 price=price,
-                image_urls=image_urls
+                image_urls=image_urls.split(',')[-1]
             )
 
     else:

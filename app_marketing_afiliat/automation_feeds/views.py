@@ -1,8 +1,11 @@
 #
 #
 #
-from django.views.generic import TemplateView
-from django.http import JsonResponse
+#
+#
+#
+#
+from django.views.generic import TemplateView, ListView
 from .models import Feeds
 
 
@@ -30,15 +33,11 @@ class PromotionsPageView(TemplateView):
     template_name = 'automation_feeds/promotions.html'
 
 
-class FeedsPageView(TemplateView):
+class FeedsPageView(ListView):
+    model = Feeds
     template_name = 'automation_feeds/feeds.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        feeds = Feeds.objects.all()[:8]
-        process_feeds(feeds)
-        context['feeds'] = feeds
-        return context
+    context_object_name = 'page'
+    paginate_by = 12
 
 
 class ShopsPageView(TemplateView):
