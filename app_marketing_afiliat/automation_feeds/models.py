@@ -15,3 +15,13 @@ class Feeds(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class ContactForm(models.Model):
+    nume = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.nume

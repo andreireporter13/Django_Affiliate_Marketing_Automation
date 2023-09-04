@@ -7,6 +7,8 @@
 #
 from django.views.generic import TemplateView, ListView
 from .models import Feeds
+from .forms import ContactFormData
+from django.shortcuts import render, redirect
 
 
 # process feeds here
@@ -46,3 +48,22 @@ class ShopsPageView(TemplateView):
 
 class ContactPageView(TemplateView):
     template_name = 'automation_feeds/contact.html'
+
+    def get(self, request, *args, **kwargs):
+        context = {'form': ContactFormData()}
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        form = ContactFormData(request.POST)
+        if form.is_valid():
+            # save to db
+            form.save()
+            # redirect to succes page
+            return redirect('succes-contact')
+        else:
+            context = {'form': form}
+            return render(request, self.template_name, context)
+
+
+class SuccesContactForm(TemplateView):
+    template_name = 'automation_feeds/succes_contact.html'

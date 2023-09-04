@@ -29,26 +29,11 @@
             </div>
           </div>
         </div>
-         <div class="col-md-6 col-lg-5 px-0">
-             <form method="post">
-                 {% csrf_token %}
-                 <div>
-                     <input type="text" name="{{ form.nume.name }}" placeholder="Name" />
-                 </div>
-                 <div>
-                     <input type="email" name="{{ form.email.name }}" placeholder="Email" />
-                 </div>
-                 <div>
-                     <input type="text" name="{{ form.phone.name }}" placeholder="Phone" />
-                 </div>
-                 <div>
-                     <input type="text" name="{{ form.message.name }}" class="message-box" placeholder="Mesajul dvs:" />
-                 </div>
-                 <div class="d-flex">
-                     <button type="submit">Trimite</button>
-                 </div>
-             </form>
-         </div> 
+        <div class="col-md-6 col-lg-5 px-0">
+        <h2> Succes submit. </h2>
+        </div>
+          </form>
+        </div>
       </div>
     </div>
   </section>

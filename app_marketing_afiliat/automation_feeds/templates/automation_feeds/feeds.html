@@ -41,37 +41,35 @@
     <br>
 
 <div class="text-center">
-        {% if page_obj.has_previous %}
-            <a href="?page={{page_obj.previous_page_number}}" 
-     class="btn btn-secondary mx-2">Previous</a>
-        {% endif %}
-
-        <a href="?page=1" class="btn btn-secondary">First</a>
-
-        {% for num in page_obj.paginator.page_range %}
-            {% if num == page_obj.number %}
-                <span class="current-page">{{ num }}</span>
-            {% else %}
-                <a href="?page={{num}}" class="btn btn-secondary mx-2">
-     {{ num }}
-     </a>
+    {% if page_obj.has_previous %}
+        <a href="?page=1" class="btn btn-secondary mx-2">First</a>
+        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary mx-2">Previous</a>
+    {% endif %}
+    
+    {% for num in page_obj.paginator.page_range %}
+        {% if num == page_obj.number %}
+            <span class="current-page">{{ num }}</span>
+        {% else %}
+            {% if num == 1 or num == page_obj.paginator.num_pages %}
+                <a href="?page={{ num }}" class="btn btn-secondary mx-2">{{ num }}</a>
+            {% elif num in page_obj.page_range|slice:"2" %}
+                {% if num == page_obj.page_range|slice:"2"|first %}
+                    <a href="?page={{ num }}" class="btn btn-secondary mx-2">{{ num }}</a>
+                {% else %}
+                    <span class="ellipsis">...</span>
+                {% endif %}
+            {% elif num == page_obj.page_range|slice:"2"|last %}
+                <a href="?page={{ num }}" class="btn btn-secondary mx-2">{{ num }}</a>
             {% endif %}
-        {% endfor %}
-
-        <a href="?page={{page_obj.paginator.num_pages}}" 
-     class="btn btn-secondary mx-2">
-     Last
-     </a>
-
-        {% if page.has_next %}
-            <a href="?page={{page_obj.next_page_number}}" 
-     class="btn btn-secondary mx-2">
-     Next
-     </a>
         {% endif %}
+    {% endfor %}
+    
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary mx-2">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-secondary mx-2">Last</a>
+    {% endif %}
 </div>
 
-
-  </section> 
+</section>
 
   {% endblock %}
