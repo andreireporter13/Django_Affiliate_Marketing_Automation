@@ -24,7 +24,7 @@
                       <p>
                       Acesta este un proiect de automatizare exclusiv cu Python3. Ca framework-uri folosesc: Django cu PostgreSQL, Bootstrap si librarii python: requests, json -> pentru datele ce vor fi actualizate la fiecare ora; iar a baza de date folosim PostgreSQL. Deci, acest proiect are o baza solida ca sa existe! 
                       </p>
-                      <a href="">
+                      <a href="{% url 'contact' %}">
                         Contact Us
                       </a>
                     </div>
@@ -49,7 +49,7 @@
                       <p>
                        Acest proiect poate fi customizat in functie de politica interna a proiectului dvs. Fiind facut cu Python si Django, acest proiect are setata ca limita doar imaginatia. Deci, sa-i dam frau liber imaginatiei. 
                       </p>
-                      <a href="">
+                      <a href="{% url 'contact' %}">
                         Contact Us
                       </a>
                     </div>
@@ -74,7 +74,7 @@
                       <p>
                         Django + Python este solutia perfecta. Fiind un proiect 100% customizabil si automatizat, va puteti lua grija de a face manual colectarea datelor in Excel sau CSV si de a le adauga de doua sau mai multe ori pe zi. 
                       </p>
-                      <a href="">
+                      <a href="{% url 'contact' %}">
                         Contact Us
                       </a>
                     </div>
@@ -113,7 +113,7 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Latest Products
+          Produse parsate automatizat
         </h2>
       </div>
       <div class="row">
@@ -151,7 +151,7 @@
       <!-- Load more - redirect to /feeds -->
       <div class="btn-box">
         <a href="{% url 'feeds' %}">
-          View All Products
+          Mai multe produse
         </a>
       </div>
     </div>
@@ -174,19 +174,19 @@
             <div class="detail-box">
               <div class="heading_container">
                 <h2>
-                  Best Savings on <br>
-                  new arrivals
+                  Proiecte de afiliere <br>
+                  100% automatizate
                 </h2>
               </div>
               <p>
-                Qui ex dolore at repellat, quia neque doloribus omnis adipisci, ipsum eos odio fugit ut eveniet blanditiis praesentium totam non nostrum dignissimos nihil eius facere et eaque. Qui, animi obcaecati.
+                Cele mai frumoase proiecte incep de la cele mai frumoase idei. Am reusit sa pun bazele unei idei de marketing afiliat automatizat pentru a va usura munca voastra, iar asta imi aduce cea mai mare satisfactie.
               </p>
               <div class="btn-box">
-                <a href="#" class="btn1">
-                  Buy Now
+                <a href="{% url 'shops' %}" class="btn1">
+                  Magazine
                 </a>
-                <a href="#" class="btn2">
-                  See More
+                <a href="{% url 'promotions' %}" class="btn2">
+                  Promotii
                 </a>
               </div>
             </div>
@@ -204,7 +204,7 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Why Shop With Us
+          De ce anume acest proiect!?
         </h2>
       </div>
       <div class="row">
@@ -299,10 +299,10 @@
             </div>
             <div class="detail-box">
               <h5>
-                Fast Delivery
+                100% automatizat
               </h5>
               <p>
-                variations of passages of Lorem Ipsum available
+                livram idei automatizate pentru toate nevoile
               </p>
             </div>
           </div>
@@ -414,10 +414,10 @@
             </div>
             <div class="detail-box">
               <h5>
-                Free Shiping
+                Integrare 2performant
               </h5>
               <p>
-                variations of passages of Lorem Ipsum available
+                deocamdata este integrat doar 2performant
               </p>
             </div>
           </div>
@@ -435,10 +435,10 @@
             </div>
             <div class="detail-box">
               <h5>
-                Best Quality
+                Lucram la calitate
               </h5>
               <p>
-                variations of passages of Lorem Ipsum available
+                lucram zi de zi pentru a livra un produs calitativ
               </p>
             </div>
           </div>
@@ -467,19 +467,16 @@
             <div class="detail-box">
               <div class="heading_container">
                 <h2>
-                  Gifts for your <br>
-                  loved ones
+                  Produse fresh la <br>
+                  la fiecare ora
                 </h2>
               </div>
               <p>
-                Omnis ex nam laudantium odit illum harum, excepturi accusamus at corrupti, velit blanditiis unde perspiciatis, vitae minus culpa? Beatae at aut consequuntur porro adipisci aliquam eaque iste ducimus expedita accusantium?
+                Aplicatia preia in mod automatizat produsele de pe 2performant si le insereaza in baza de date, ca ulterior sa fie mai usor de listat si de cautat ceea de ce este nevoie.
               </p>
               <div class="btn-box">
-                <a href="#" class="btn1">
-                  Buy Now
-                </a>
-                <a href="#" class="btn2">
-                  See More
+                <a href="{% url 'contact' %}" class="btn1">
+                  Mai multe detalii
                 </a>
               </div>
             </div>
@@ -495,37 +492,38 @@
 
   <!-- contact section -->
 
-  <section class="contact_section ">
-    <div class="container px-0">
-      <div class="heading_container ">
-        <h2 class="">
-          Contact Us
-        </h2>
-      </div>
+<section class="contact_section">
+  <div class="container px-0">
+    <div class="heading_container">
+      <h2>Contact</h2>
     </div>
-    <div class="container container-bg">
-      <div class="row">
-        <div class="col-lg-7 col-md-6 px-0">
-          <div class="map_container">
-            <div class="map-responsive">
-              <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
-            </div>
+  </div>
+  <div class="container container-bg">
+    <div class="row">
+      <div class="col-lg-7 col-md-6 px-0">
+        <div class="map_container">
+          <div class="map-responsive">
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Bucharest+Romania" width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
           </div>
         </div>
-        <div class="col-md-6 col-lg-5 px-0">
-            <h3> Ceva date de contact,
-              ... si un link catre pagina de 
-              contact! </h3>
-            <div class="d-flex ">
-              <button>
-                SEND
-              </button>
-            </div>
-          </form>
+      </div>
+      <div class="col-md-6 col-lg-5 px-0">
+        <div class="container">
+          <h3>Informatii de contact</h3>
+          <br>
+          <p><strong>Email:</strong> <a href="mailto:andrei.reporter13@gmail.com">andrei.reporter13@gmail.com</a></p>
+          <p><strong>Telefon:</strong> <a href="tel:+40730449825">+40730449825</a></p>
+          <p><strong>Adresă:</strong> București/Constanta</p>
+          <br>
+          <div class="btn-box">
+            <a href="{% url 'contact' %}" class="btn1">Contactati-ma acum!</a>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- end contact section -->
 
