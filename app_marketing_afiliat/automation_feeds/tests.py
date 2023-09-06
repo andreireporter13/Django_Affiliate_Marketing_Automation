@@ -4,10 +4,11 @@
 #
 #
 from django.test import TestCase
-from .models import Feeds
+from .models import Feeds, ContactForm
 #
 import requests
 from .cron import scrape_and_insert
+#
 
 
 class FeedsTestCase(TestCase):
@@ -49,3 +50,35 @@ class ScrapeAndInsertTest(TestCase):
 
         # re-request
         requests.get = original_requests_get
+
+
+class ContactFormModelTest(TestCase):
+
+    def test_create_contact_form(self):
+        contact = ContactForm(
+            nume='Andrei Cojocaru',
+            email='andrei.reporter13@gmail.com',
+            phone='0730449825',
+            message='Test cu datele mele!'
+        )
+
+        # save date to db_default
+        contact.save()
+
+        # verify data ---> !
+        saved_contact = ContactForm.objects.get(pk=contact.pk)
+        self.assertEqual(saved_contact.nume, 'Andrei Cojocaru')
+        self.assertEqual(saved_contact.email, 'andrei.reporter13@gmail.com')
+        self.assertEqual(saved_contact.phone, '0730449825')
+        self.assertEqual(saved_contact.message, 'Test cu datele mele!')
+
+    def test_contact_form_str_method(self):
+        contact = ContactForm(
+            nume='Andrei Cojocaru',
+            email='andrei.reporter13@gmail.com',
+            phone='0730449825',
+            message='Test pentru str -> nume!'
+        )
+
+        # Verify __str__ method
+        self.assertEqual(str(contact), 'Andrei Cojocaru')
