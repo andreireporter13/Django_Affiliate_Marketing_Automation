@@ -6,12 +6,16 @@
 from django.test import TestCase
 from .models import Feeds, ContactForm
 #
+from django.urls import reverse
+#
 import requests
 from .cron import scrape_and_insert
 #
+# big tests for pages
+from bs4 import BeautifulSoup
 
 
-class FeedsTestCase(TestCase):
+class FeedsTestCase(TestCase):  # -------------> START: IMPORTANT TESTS <-------------
 
     def test_insert(self):
         # Test insert in DB
@@ -25,6 +29,7 @@ class FeedsTestCase(TestCase):
 
 
 class ScrapeAndInsertTest(TestCase):
+
     def test_scrape_and_insert(self):
 
         # Clean DB
@@ -81,4 +86,28 @@ class ContactFormModelTest(TestCase):
         )
 
         # Verify __str__ method
-        self.assertEqual(str(contact), 'Andrei Cojocaru')
+        self.assertEqual(str(contact), 'Andrei Cojocaru')  # -------------> END: IMPORTANT TESTS <-------------
+
+
+class BsObject:  # -------------> START: TESTS FOR PAGES <-------------
+
+    # get bs4 object from pages
+    def find_element_by_tag(self, response, tag_name):
+        soup = BeautifulSoup(response.content, 'html.parser')
+        elements = soup.find_all(tag_name)
+        return elements
+
+
+class HomePageTest(BsObject, TestCase):
+
+    def test_only_one_h1(self):
+        response = self.client.get(reverse('home'))
+        self.assertEqual(response.status_code, 200)
+        h1 = self.find_element_by_tag(response, 'h1')
+        self.assertTrue(len(h1) == 3)
+
+    def test_image_if_exists(self):
+        response = self.client.get(reverse('home'))
+        self.assertEqual(response.status_code, 200)
+        img = self.find_element_by_tag(response, 'img')
+        self.assertTrue(len(img) > 0)
