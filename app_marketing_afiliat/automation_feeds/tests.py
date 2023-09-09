@@ -92,9 +92,16 @@ class ContactFormModelTest(TestCase):
 class BsObject:  # -------------> START: TESTS FOR PAGES <-------------
 
     # get bs4 object from pages
-    def find_element_by_tag(self, response, tag_name):
+    def find_element_by_tag_or_class(self, response, tag_name=None, class_name=None):
         soup = BeautifulSoup(response.content, 'html.parser')
-        elements = soup.find_all(tag_name)
+
+        if tag_name and class_name:
+            elements = soup.find_all(tag_name, class_=class_name)
+        elif tag_name:
+            elements = soup.find_all(tag_name)
+        else:
+            raise ValueError("Need to specify TAG - IMPORTANT, and class - but if prefered!")
+
         return elements
 
 
@@ -103,11 +110,62 @@ class HomePageTest(BsObject, TestCase):
     def test_only_one_h1(self):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
-        h1 = self.find_element_by_tag(response, 'h1')
+        h1 = self.find_element_by_tag_or_class(response, 'h1')
         self.assertTrue(len(h1) == 3)
 
     def test_image_if_exists(self):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
-        img = self.find_element_by_tag(response, 'img')
+        img = self.find_element_by_tag_or_class(response, 'img')
         self.assertTrue(len(img) > 0)
+
+
+class FeedsPageTest(BsObject, TestCase):
+
+    def test_feeds_h1(self):
+        response = self.client.get(reverse('feeds'))
+        self.assertEqual(response.status_code, 200)
+        h1 = self.find_element_by_tag_or_class(response, 'h1')
+        self.assertTrue(len(h1) == 1)
+
+    # test products on feeds page
+    def setUp(self):
+        for i in range(1, 13):
+            Feeds.objects.create(
+                title=f"Product {i}",
+                affiliate_code=f"https://example.com/product{i}",
+                price=10.99 + i,
+                image_urls="https://example.com/image.jpg"
+            )
+
+    def test_feeds_page_has_12_products(self):
+        response = self.client.get(reverse('feeds'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<div class="col-sm-6 col-md-4 col-lg-3"', count=12)
+
+
+class ShopsPageTest(BsObject, TestCase):
+
+    def test_shop_h1(self):
+        response = self.client.get(reverse('shops'))
+        self.assertEqual(response.status_code, 200)
+        h1 = self.find_element_by_tag_or_class(response, 'h1')
+        self.assertTrue(len(h1) == 1)
+
+
+class PromotionsPageTest(BsObject, TestCase):
+
+    def test_promotions_h1(self):
+        response = self.client.get(reverse('promotions'))
+        self.assertEqual(response.status_code, 200)
+        h1 = self.find_element_by_tag_or_class(response, 'h1')
+        self.assertTrue(len(h1) == 1)
+
+
+class ContactPageTest(BsObject, TestCase):
+
+    def test_promotions_h1(self):
+        response = self.client.get(reverse('contact'))
+        self.assertEqual(response.status_code, 200)
+        h1 = self.find_element_by_tag_or_class(response, 'h1')
+        self.assertTrue(len(h1) == 1)

@@ -41,6 +41,9 @@ class FeedsPageView(ListView):
     context_object_name = 'page'
     paginate_by = 12
 
+    def get_queryset(self):
+        return Feeds.objects.all().order_by('id')
+
 
 class ShopsPageView(TemplateView):
     template_name = 'automation_feeds/shops.html'
