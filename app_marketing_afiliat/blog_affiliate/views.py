@@ -5,8 +5,8 @@
 #
 from django.views.generic import ListView
 from django.views.generic import DetailView
-from django.shortcuts import get_object_or_404
 from .models import Post, Category
+from django.http import Http404
 
 
 class BlogPageView(ListView):
@@ -28,7 +28,14 @@ class PostDetailView(DetailView):
         category_slug = self.kwargs.get('category_slug')
         post_slug = self.kwargs.get('post_slug')
 
-        category = get_object_or_404(Category, slug=category_slug)
-        post = get_object_or_404(Post, slug=post_slug, category=category)
+        try:
+            category = Category.objects.get(slug=category_slug)
+            post = Post.objects.get(slug=post_slug, category=category)
+        except Category.DoesNotExist:
+            # Dacă categoria nu există, poți să setezi o categorie implicită sau să arunci o excepție Http404.
+            # Iată un exemplu cu o categorie implicită cu numele 'General':
+            category = Category.objects.get_or_create(name='General')[0]
+            post = Post.objects.get(slug=post_slug, category=category)
+            raise Http404("Categoria specificată nu există")
 
         return post

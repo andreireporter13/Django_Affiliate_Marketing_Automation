@@ -19,7 +19,11 @@
             <img src="{{ post.image.url }}" alt="{{ post.title }}">
             <p>{{ post.content|slice:"500"|safe }}...</p>
             <p>Categorie: {{ post.category.name }}</p>
-            <a href="{% url 'post_detail' category_slug=post.category.slug slug=post.get_slug %}">Citeste mai departe</a>
+
+            {% if post.category.slug %}
+                <a href="{% url 'post_detail' category_slug=post.category.slug slug=post.get_slug %}">Citeste mai departe</a>
+            {% endif %}
+
         </div>
     {% endfor %}
 {% else %}
