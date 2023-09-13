@@ -16,7 +16,7 @@ class Post(models.Model):
         User,
         on_delete=models.CASCADE,
     )
-    slug = models.SlugField(unique=True, default='')
+    slug = models.SlugField(unique=True, default='', blank=True)
     image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     published_date = models.DateTimeField(null=True, blank=True)
@@ -26,7 +26,8 @@ class Post(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        if not self.slug:  # Generează slug-ul numai dacă nu există deja
+            self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
