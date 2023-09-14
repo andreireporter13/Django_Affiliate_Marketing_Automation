@@ -9,26 +9,38 @@
 <section class="blog_section layout_padding">
     <div class="container">
         <div class="heading_container heading_center">
-            <h1>Blog</h1>
+            <h1>Pagina de blog</h1>
+            <br>
         </div>
         <div class="text-center">
-            {% for post in page %}
-            <div class="box mb-4">
-                <div class="img-box">
-                    <img src="{{ MEDIA_URL }}{{ post.image }}" alt="{{ post.title }}">
-                </div>
-                <div class="detail-box">
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.content|truncatechars:200 }}</p>
-                    <p>Autor: {{ post.author.username }}</p>
-                </div>
-                <button class="read-more-button" data-url="{{ post.get_absolute_url }}">Citește mai mult</button>
-                <div class="full-content" style="display: none;">
-                    {{ post.content }}
-                </div>
-            </div>
-            {% endfor %}
+    {% for post in page %}
+    <div class="box mb-4">
+      
+        <!-- details blog -->
+        <div class="detail-box">
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.content|truncatechars:200 }}</p>
+            <p>Autor: {{ post.author.username }}</p>
         </div>
+
+        <!-- images -->
+        <div class="img-box">
+    {% if post.image.url %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" width="800" height="500">
+    {% else %}
+        <p>Imagine indisponibilă</p>
+    {% endif %}
+    </div>
+    <br> 
+        
+        <button class="read-more-button" data-url="{{ post.get_absolute_url }}">Citește mai mult</button>
+        <div class="full-content" style="display: none;">
+            {{ post.content }}
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+
     <br>
     <br>
 
