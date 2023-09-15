@@ -19,7 +19,9 @@
         <!-- details blog -->
         <div class="detail-box">
             <h3>{{ post.title }}</h3>
-            <p>{{ post.content|truncatechars:200 }}</p>
+
+                <p>{{ post.content|truncatechars:200 }}</p>
+
             <p>Autor: {{ post.author.username }}</p>
         </div>
 

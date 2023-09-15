@@ -1,0 +1,21 @@
+{% extends "automation_feeds/base.html" %}
+
+{% block title %}
+<title>Blog View Template</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="article">
+    <div style="text-align: center;">
+        <h1>{{ post.title }}</h1>
+        <p>Publicat de: {{ post.author }}</p>
+        <p>Data publicării: {{ post.published_date|date:"d-m-Y H:i" }}</p>
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" width="1000">
+      </div>
+    <div>
+        <br>
+        <p style="font-size: 18px; line-height: 1.6;">{{ post.content | safe }}</p>
+    </div>
+</div>
+{% endblock %}

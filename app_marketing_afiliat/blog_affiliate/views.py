@@ -3,9 +3,9 @@
 #
 #
 #
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, TemplateView
+from django.shortcuts import get_object_or_404
 from .models import Post
-from django.http import Http404
 
 
 class BlogPageView(ListView):
@@ -16,19 +16,12 @@ class BlogPageView(ListView):
     paginate_by = 2
 
 
-class PostDetailView(DetailView):
-    model = Post
-    template_name = 'blog_affiliate/post_detail.html'
-    context_object_name = 'post'
-    slug_field = 'post_slug'
-    slug_url_kwarg = 'post_slug'
+class PostDetailView(TemplateView):
+    template_name = 'blog_affiliate/blog_view.html'
 
-    def get_object(self, queryset=None):
-        post_slug = self.kwargs.get('post_slug')
-
-        try:
-            post = Post.objects.get(slug=post_slug)
-        except Post.DoesNotExist:
-            raise Http404("Acest blog post nu exista!")
-
-        return post
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        slug = self.kwargs['slug']
+        post = get_object_or_404(Post, slug=slug)
+        context['post'] = post
+        return context
