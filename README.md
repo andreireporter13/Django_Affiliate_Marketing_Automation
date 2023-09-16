@@ -3,7 +3,7 @@
 ![Marketing Afiliat Automatizat](./project_photos/affiliate-marketing-prezentation.png)
 
 Video presentation:
-[![Video Presentation](https://www.youtube.com/watch?v=9DRjLU-3F3k "Marketing Afiliat Automatizat - Django App")
+[![Django App Video](https://img.youtube.com/vi/9DRjLU-3F3k/0.jpg)](https://www.youtube.com/watch?v=9DRjLU-3F3k "Marketing Afiliat Automatizat")
 
 Acest proiect este o aplicație web dezvoltată cu Django care automatizează marketingul afiliat și actualizarea produselor afiliate.
 
