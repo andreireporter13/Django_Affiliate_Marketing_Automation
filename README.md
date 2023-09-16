@@ -28,8 +28,8 @@ Acest proiect are ca scop automatizarea marketingului afiliat și actualizarea a
 Instrucțiuni pentru configurarea mediului de dezvoltare, inclusiv instalarea Django, crearea unui mediu virtual, și instalarea pachetelor necesare.
 
 ```bash
-# Exemplu de comenzi pentru configurarea mediului de dezvoltare
-pip install virtualenv
-virtualenv venv
-source venv/bin/activate
-pip install -r requirements.txt
+---> Clonezi repo-ul si dupa:
+# configurarea proiectului in Linux
+pip3 -m venv numele_venvului
+source numele-venvului/bin/activate
+pip3 install -r requirements.txt
