@@ -13,22 +13,22 @@ Acest proiect este o aplicație web dezvoltată cu Django care automatizează ma
 1. [Introducere](#introducere)
 2. [Configurarea Mediului de Dezvoltare](#configurarea-mediului-de-dezvoltare)
 3. [Structura Proiectului](#structura-proiectului)
-4. [Modele de Date](#modele-de-date)
-5. [Template-uri](#template-uri)
-6. [Procesarea Produselor Afiliate](#procesarea-produselor-afiliate)
-7. [Sincronizarea automată a Produselor](#sincronizarea-automata-a-produselor)
-8. [Încheiere](#incheiere)
+4. [Template-uri](#template-uri)
+5. [Procesarea Produselor Afiliate](#procesarea-produselor-afiliate)
+6. [Încheiere](#incheiere)
 
 ## Introducere
 
-Acest proiect are ca scop automatizarea marketingului afiliat și actualizarea automată a datelor produselor afiliate. Este o solutie pentru a salva acel timp al afiliatilor care pierd vremea cu rutina zilnica de a-si actualiza produsele. Solutia este - acest proiect in Django.
+Acest proiect are ca scop principal automatizarea marketingului afiliat și actualizarea automată a datelor produselor afiliate. Cu ritmul rapid al mediului online și varietateaîn creștere a produselor și serviciilor disponibile, afiliații se confruntă deseori cu o rutină zilnică de actualizare a listelor de produse, o sarcină care poate fi intens consumatoare de timp și resurse.
+
 
 ## Configurarea Mediului de Dezvoltare
 
 Instrucțiuni pentru configurarea mediului de dezvoltare, inclusiv instalarea Django, crearea unui mediu virtual, și instalarea pachetelor necesare.
 
 ```bash
----> Clonezi repo-ul si dupa:
+# cloneaza proiectul
+git clone https://github.com/andreireporter13/Django_Affiliate_Marketing_Automation
 # configurarea proiectului in Linux
 pip3 -m venv numele_venvului
 source numele-venvului/bin/activate
@@ -49,3 +49,23 @@ Proiectul este structurat într-un mod organizat și eficient pentru a susține 
 
 Ambele aplicații sunt integrate perfect și funcționează armonios pentru a oferi cea mai bună experiență. Structura noastră de proiect asigură că totul funcționează perfect și eficient, pentru ca dvs. să nu vă faceți griji cu privire la actualizările de produse noi ne ocupăm de toate acestea pentru dvs.
 
+
+## Template-uri
+
+În cadrul proiectului nostru Django, suntem dedicați să oferim flexibilitate maximă dezvoltatorilor și designerilor. O parte importantă a acestui obiectiv este abilitatea de a include orice template de frontend pe care doriți să îl integrați în aplicația noastră.
+
+Cu ajutorul sistemului de template-uri Django, puteți adăuga cu ușurință orice aspect sau design dorit pentru a satisface nevoile specifice ale proiectului dumneavoastră. Fie că aveți propriile șabloane personalizate sau folosiți șabloane de frontend populare, acestea pot fi integrate și personalizate pentru a se potrivi perfect cu funcționalitățile și conținutul proiectului nostru.
+
+Cu alte cuvinte, vă invităm să aduceți orice idee și design doriți în proiectul nostru Django.
+
+
+## Procesarea Produselor Afiliate
+
+Suntem mândri să vă anunțăm că procesarea datelor produselor afiliate în cadrul proiectului nostru este complet automatizată și gestionată de un program de planificare cron (crontab). Ce înseamnă asta pentru dvs.? Simplu, nu trebuie să vă mai faceți griji cu privire la actualizarea și sincronizarea produselor.
+
+Cu ajutorul unui crontab, proiectul nostru rulează automat actualizările la intervale regulate prestabilite. Aceasta înseamnă că datele din sursele de afiliere sunt colectate și actualizate în mod regulat, fără a necesita intervenția manuală a echipei noastre.
+
+
+## Încheiere
+
+În încheiere, dorim să subliniem că acest proiect este disponibil pentru toți cei interesați să îl utilizeze și să contribuie la dezvoltarea sa. Ne dorim să aducem inovație și eficiență în lumea marketingului afiliat și suntem încântați să împărtășim această soluție cu comunitatea largă.
