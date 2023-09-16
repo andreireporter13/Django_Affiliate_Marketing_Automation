@@ -33,6 +33,7 @@ Instrucțiuni pentru configurarea mediului de dezvoltare, inclusiv instalarea Dj
 pip3 -m venv numele_venvului
 source numele-venvului/bin/activate
 pip3 install -r requirements.txt
+```
 
 ## Structura Proiectului
 
