@@ -1,6 +1,7 @@
-# Proiectul de Marketing Afiliat Automatizat
+# Proiectul de Marketing Afiliat Automatizat v1.0
 
 ![Marketing Afiliat Automatizat](./project_photos/affiliate-marketing-prezentation.png)
+
 
 Video presentation:
 
@@ -17,3 +18,18 @@ Acest proiect este o aplicație web dezvoltată cu Django care automatizează ma
 6. [Procesarea Produselor Afiliate](#procesarea-produselor-afiliate)
 7. [Sincronizarea automată a Produselor](#sincronizarea-automata-a-produselor)
 8. [Încheiere](#incheiere)
+
+## Introducere
+
+Acest proiect are ca scop automatizarea marketingului afiliat și actualizarea automată a datelor produselor afiliate. Aici puteți descrie în detaliu obiectivele și motivația din spatele proiectului.
+
+## Configurarea Mediului de Dezvoltare
+
+Instrucțiuni pentru configurarea mediului de dezvoltare, inclusiv instalarea Django, crearea unui mediu virtual, și instalarea pachetelor necesare.
+
+```bash
+# Exemplu de comenzi pentru configurarea mediului de dezvoltare
+pip install virtualenv
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
