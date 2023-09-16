@@ -1,6 +1,6 @@
 # Proiectul de Marketing Afiliat Automatizat
 
-![Logo Proiect](https://github.com/andreireporter13/Django_Affiliate_Marketing_Automation/project_photos/affiliate-marketing-prezentation.png)
+![Logo Proiect](https://github.com/andreireporter13/Django_Affiliate_Marketing_Automation/tree/main/project_photos/affiliate-marketing-prezentation.png)
 
 Acest proiect este o aplicație web dezvoltată cu Django care automatizează marketingul afiliat și actualizarea produselor afiliate.
 
